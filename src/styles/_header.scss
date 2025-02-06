@@ -1,0 +1,12 @@
+// header.scss
+.header_container {
+  display: flex;
+  height: 100px;
+  background-color: rgb(194, 212, 216);
+  justify-content: end;
+  align-items: center;
+}
+
+.loginButton {
+  padding-right: 50px;
+}

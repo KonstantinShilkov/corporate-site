@@ -1,0 +1,54 @@
+// _dashboard.scss
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 60px;
+  width: 100%;
+}
+
+.dashboard__container1 {
+  display: flex;
+  gap: 40px;
+  justify-content: end;
+}
+
+.dashboard__container2 {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.allEvents {
+  display: flex;
+}
+
+.uniqIp {
+  display: flex;
+}
+
+.activeTraps {
+  display: flex;
+}
+
+.dashboard__container3 {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.dashboard__container4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.eventsMap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  background-color: grey;
+}
