@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import Sidebar from '@/components/Sidebar';
-import Header from '@/components/Header';
+import { ReactNode } from "react";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -8,11 +8,11 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="mainlayout_container">
+    <div className="mainLayout__container">
       <Sidebar />
-      <div className="mainlayout_main">
+      <div className="mainLayout__main">
         <Header />
-        <main className="mainlayout_content">{children}</main>
+        <main className="mainLayout__content">{children}</main>
       </div>
     </div>
   );

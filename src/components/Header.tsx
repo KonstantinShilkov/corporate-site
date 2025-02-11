@@ -1,38 +1,33 @@
-// import { Button } from "@mui/material";
-
-// export default function Header() {
-//   return (
-//     <header className="header_container">
-//       <div className="loginButton">
-//         <Button sx={{ color: "black", fontSize: "20px" }}>Login</Button>
-//       </div>
-//     </header>
-//   );
-// }
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@mui/material";
+import { useRouter } from "next/router";
+import MenuIcon from "@mui/icons-material/Menu";
 
-export default function Header() {
+const Header: React.FC = () => {
+  const router = useRouter();
+
+  const handleHomeRedirect = () => {
+    router.push("/");
+  };
+
   return (
-    <Box
-      sx={{
-        height: "60px", // Set the height of the header
-        background: "linear-gradient(to right, #808080, #ffffff)", // Gray to white gradient
-        display: "flex",
-        alignItems: "center",
-        padding: "0 16px", // Horizontal padding
-      }}
-    >
-      <IconButton edge="start" color="inherit" aria-label="menu">
+    <Box className="headerBar">
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        style={{ marginLeft: "10px" }}
+        onClick={handleHomeRedirect}
+      >
         <MenuIcon />
       </IconButton>
-      <div className="loginButton" style={{ marginLeft: "auto" }}>
+      <div className="loginButton">
         <Button sx={{ color: "black", fontSize: "20px" }}>Login</Button>
       </div>
     </Box>
   );
-}
+};
+
+export default Header;

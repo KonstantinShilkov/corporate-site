@@ -1,129 +1,79 @@
-// import Link from "next/link";
-// import Button from "@mui/material/Button";
-
-// export default function Sidebar() {
-//   return (
-//     <nav className="sidebar_container">
-//       <Link href="/dashboard" passHref className="sidebar_link">
-//         <Button
-//           color="secondary"
-//           sx={{
-//             fontSize: "22px",
-//           }}
-//         >
-//           Dashboard
-//         </Button>
-//       </Link>
-//       <Link href="/events" passHref className="sidebar_link">
-//         <Button
-//           color="secondary"
-//           sx={{
-//             fontSize: "22px",
-//           }}
-//         >
-//           Events
-//         </Button>
-//       </Link>
-//       <Link href="/trap" className="sidebar_link">
-//         <Button
-//           color="secondary"
-//           sx={{
-//             fontSize: "22px",
-//           }}
-//         >
-//           Trap
-//         </Button>
-//       </Link>
-//       <Link href="/control" className="sidebar_link">
-//         <Button
-//           color="secondary"
-//           sx={{
-//             fontSize: "22px",
-//           }}
-//         >
-//           Control
-//         </Button>
-//       </Link>
-//       <Link href="/settings" className="sidebar_link">
-//         <Button
-//           color="secondary"
-//           sx={{
-//             fontSize: "22px",
-//           }}
-//         >
-//           Settings
-//         </Button>
-//       </Link>
-//     </nav>
-//   );
-// }
-
-// import * as React from "react";
-// import Box from "@mui/material/Box";
-// import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
-// import { TreeItem } from "@mui/x-tree-view/TreeItem";
-// import Link from "next/link";
-
-// export default function Sidebar() {
-//   return (
-//     <Box sx={{ minWidth: 250, padding: 2 }}>
-//       <SimpleTreeView>
-//         <TreeItem
-//           itemId="dashboard"
-//           label={<Link href="/dashboard">Dashboard</Link>}
-//         />
-//         <TreeItem itemId="events" label={<Link href="/events">Events</Link>} />
-//         <TreeItem itemId="trap" label={<Link href="/trap">Trap</Link>} />
-//         <TreeItem
-//           itemId="control"
-//           label={<Link href="/control">Control</Link>}
-//         />
-//         <TreeItem
-//           itemId="settings"
-//           label={<Link href="/settings">Settings</Link>}
-//         />
-//       </SimpleTreeView>
-//     </Box>
-//   );
-// }
-
-import * as React from "react";
-import Box from "@mui/material/Box";
-import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
-import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { useState } from "react";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-export default function Sidebar() {
-  const [selectedItem, setSelectedItem] = React.useState<string | null>(null);
+const Sidebar: React.FC = () => {
   const router = useRouter();
-
-  const handleItemClick = (itemId: string, href: string) => {
-    setSelectedItem(itemId);
-    router.push(href);
-  };
-
+  const isActive = (path: string) => router.pathname.startsWith(path);
+  const isControlSection = router.pathname.startsWith("/control");
+  const [isControlOpen, setIsControlOpen] = useState(isControlSection);
+  const toggleControl = () => setIsControlOpen((prev) => !prev);
   return (
-    <Box sx={{ minWidth: 250, padding: 2 }}>
-      <SimpleTreeView>
-        {["dashboard", "events", "traps", "control", "settings"].map((item) => (
-          <TreeItem
-            key={item}
-            itemId={item}
-            label={
-              <div
-                onClick={() => handleItemClick(item, `/${item}`)}
-                style={{
-                  fontWeight: selectedItem === item ? "bold" : "normal",
-                  cursor: "pointer",
-                  padding: "4px 8px",
-                }}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </div>
-            }
+    <div className="sidebar__container">
+      <div className="dashboardLink">
+        <Link
+          href="/dashboard"
+          className={isActive("/dashboard") ? "active" : ""}
+        >
+          Dashboard
+        </Link>
+      </div>
+      <div className="eventsLink">
+        <Link href="/events" className={isActive("/events") ? "active" : ""}>
+          Events
+        </Link>
+      </div>
+      <div className="trapsLink">
+        <Link href="/traps" className={isActive("/traps") ? "active" : ""}>
+          Honeypots
+        </Link>
+      </div>
+      <div>
+        <Link href="" onClick={toggleControl} className="controlLink">
+          <span className="controlLink__text">Control</span>
+          <ArrowForwardIosIcon
+            className={`arrowIcon ${isControlOpen ? "expanded" : ""}`}
           />
-        ))}
-      </SimpleTreeView>
-    </Box>
+        </Link>
+        <div className={`controlSubLinks ${isControlOpen ? "open" : ""}`}>
+          <div className="authMethodLink">
+            <Link
+              href="/control/auth-method"
+              className={isActive("/control/auth-method") ? "active" : ""}
+            >
+              Auth Method
+            </Link>
+          </div>
+          <div className="eventsTransferLink">
+            <Link
+              href="/control/events-transfer"
+              className={isActive("/control/events-transfer") ? "active" : ""}
+            >
+              Events Transfer
+            </Link>
+          </div>
+          <div className="notificationsLink">
+            <Link
+              href="/control/notifications"
+              className={isActive("/control/notifications") ? "active" : ""}
+            >
+              Notifications
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="settingsLink">
+        <Link
+          href="/settings"
+          className={isActive("/settings") ? "active" : ""}
+        >
+          Settings
+        </Link>
+      </div>
+    </div>
   );
-}
+};
+
+export default Sidebar;
