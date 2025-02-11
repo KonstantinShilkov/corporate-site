@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import TrapsTable from "@/components/trapsComponents/TrapsTable";
 import MainLayout from "@/layouts/MainLayout";
 import { Button } from "@mui/material";
-import AddTrapDialog from "@/components/trapsComponents/TrapDialog";
+import EventsTransferTable from "@/components/controlComponents/EventsTransferTable";
+import AddEventsTransferDialog from "@/components/controlComponents/EventsTransferDialog";
 
-const Traps: React.FC = () => {
+const EventsTransfer: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleClickOpen = (): void => {
@@ -17,30 +17,29 @@ const Traps: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="trap__container">
-        <div className="addTrapButton">
+      <div className="eventsTransfer__container">
+        <div className="addEventsTransferButton">
           <Button
             sx={{
               color: "white",
               fontSize: "18px",
               backgroundColor: "black",
-              width: "110px",
               "&:hover": {
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
               },
             }}
             onClick={handleClickOpen}
           >
-            Add Trap
+            Add Method
           </Button>
         </div>
-        <div className="trapsTable">
-          <TrapsTable />
+        <div className="eventsTransferTable">
+          <EventsTransferTable />
         </div>
       </div>
-      <AddTrapDialog open={open} handleClose={handleClose} />
+      <AddEventsTransferDialog open={open} handleClose={handleClose} />
     </MainLayout>
   );
 };
 
-export default Traps;
+export default EventsTransfer;

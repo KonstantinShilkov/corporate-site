@@ -1,12 +1,17 @@
-import MainLayout from '@/layouts/MainLayout';
+import MainLayout from "@/layouts/MainLayout";
 
-export default function Home() {
+const HomePage: React.FC = () => {
   return (
     <MainLayout>
-      <div className="homepage_container">
-        <h2 className="homepage_title">Welcome to the DDD</h2>
-        <p className="homepage_text">Select an option from the sidebar to get started.</p>
+      <div className="homepage__container">
+        <h2>Welcome to the DDD</h2>
+        <p>
+          Добро пожаловать в Инфрасек.DDP! Ваш инструмент для проактивной защиты
+          от киберугроз. Отслеживайте атаки в реальном времени, управляйте
+          ловушками и анализируйте поведение злоумышленников.
+        </p>
       </div>
     </MainLayout>
   );
-}
+};
+export default HomePage;

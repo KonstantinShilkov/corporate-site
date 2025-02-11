@@ -1,4 +1,37 @@
 // events.scss
-.events_container {
-  padding: 20px;
+.events__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.menuBar {
+  display: flex;
+  // padding-top: 25px;
+}
+
+.filterSettingsBar {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid black;
+  padding-top: 25px;
+}
+
+.periodInput {
+  display: flex;
+  gap: 20px;
+}
+
+.filterContainer {
+  display: flex;
+  width: 100%;
+}
+
+.filterBar {
+  display: flex;
+}
+
+.filterResults {
+  display: flex;
 }

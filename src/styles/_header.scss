@@ -2,11 +2,16 @@
 .header_container {
   display: flex;
   height: 100px;
-  background-color: rgb(194, 212, 216);
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.loginButton {
-  padding-right: 50px;
+.headerBar {
+  height: 60px;
+  background-color: rgb(242, 242, 242);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // padding: 0 16px;
+  padding: 20px 25px 0 25px;
 }
