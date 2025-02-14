@@ -9,7 +9,7 @@ interface IndexContextType {
 const IndexContext = createContext<IndexContextType | undefined>(undefined);
 
 const fetchIndices = async (): Promise<string> => {
-  const response = await fetch("/api/getIndices");
+  const response = await fetch("/");
   const data = await response.json();
   return data.defaultIndex || "default-index";
 };
