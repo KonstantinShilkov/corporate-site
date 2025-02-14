@@ -22,6 +22,7 @@ const EventsTransfer: React.FC = () => {
           <Button
             sx={{
               color: "white",
+              width: "110px",
               fontSize: "18px",
               backgroundColor: "black",
               "&:hover": {
@@ -30,7 +31,7 @@ const EventsTransfer: React.FC = () => {
             }}
             onClick={handleClickOpen}
           >
-            Add Method
+            Add
           </Button>
         </div>
         <div className="eventsTransferTable">

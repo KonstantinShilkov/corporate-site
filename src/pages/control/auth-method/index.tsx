@@ -22,6 +22,7 @@ const AuthMethod: React.FC = () => {
           <Button
             sx={{
               color: "white",
+              width: "110px",
               fontSize: "18px",
               backgroundColor: "black",
               "&:hover": {
@@ -30,7 +31,7 @@ const AuthMethod: React.FC = () => {
             }}
             onClick={handleClickOpen}
           >
-            Add Method
+            Add
           </Button>
         </div>
         <div className="authMethodTable">
